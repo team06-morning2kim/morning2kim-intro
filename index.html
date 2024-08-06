@@ -49,12 +49,12 @@
         document.getElementById('commentForm').addEventListener('submit', function (e) {
             e.preventDefault();
 
-            var name = document.getElementById('name').value;
-            var password = document.getElementById('password').value;
-            var comment = document.getElementById('comment').value;
-            var timestamp = new Date().toLocaleString();
+            let name = document.getElementById('name').value;
+            let password = document.getElementById('password').value;
+            let comment = document.getElementById('comment').value;
+            let timestamp = new Date().toLocaleString();
 
-            var commentCard = document.createElement('div');
+            let commentCard = document.createElement('div');
             commentCard.className = 'card p-3 my-3 comment-card';
             commentCard.dataset.password = password;  
             commentCard.innerHTML = `
