@@ -7,8 +7,8 @@
     <title>[오전to김] 소개 페이지</title>
 
 
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
+    <!-- <script src='main.js'></script> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -247,7 +247,32 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
     <script type="module">
-        document.getElementById('commentForm').addEventListener('submit', function (e) {
+
+        // Firebase SDK 라이브러리 가져오기
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { getDocs, doc, getDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyDpe_9Kox1KJx_J2GP3s_FHgir8dLVcfuE",
+            authDomain: "sparta-morning2kim.firebaseapp.com",
+            projectId: "sparta-morning2kim",
+            storageBucket: "sparta-morning2kim.appspot.com",
+            messagingSenderId: "63603004697",
+            appId: "1:63603004697:web:4efb0b6b5fde5c34912188",
+            measurementId: "G-DN6TGVGTFF"
+        };
+
+        // Firebase 인스턴스 초기화
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+
+        document.getElementById('commentForm').addEventListener('submit', async function (e) {
             e.preventDefault();
 
             let name = document.getElementById('name').value;
@@ -271,6 +296,19 @@
 
             document.getElementById('commentsList').appendChild(commentCard);
 
+
+            /** 방명록 등록 */
+            let doc = {
+                'name': name,
+                'password': password,
+                'comment': comment,
+                'created_dtm': new Date().toLocaleString()
+            };
+            await addDoc(collection(db, "guest_book"), doc);
+
+            alert('정상적으로 등록되었습니다.');
+            window.location.reload(); // 새로고침
+
             // Clear the form
             document.getElementById('commentForm').reset();
         });
@@ -282,12 +320,23 @@
             commentToDelete = $(this).closest('.comment-card');
         });
 
-        document.getElementById('confirmDelete').addEventListener('click', function () {
-            let deletePassword = document.getElementById('deletePassword').value;
 
+        document.getElementById('confirmDelete').addEventListener('click', async function () {
+            let deletePassword = document.getElementById('deletePassword').value;
+            
             if (commentToDelete && String(commentToDelete.data('password')) === String(deletePassword)) {
                 commentToDelete.remove();
+
                 $('#deleteModal').modal('hide');
+                const docId = String(commentToDelete.data('docId')) ; 
+                const docSnap = await getDoc(doc(db, "guest_book", docId));
+                if (docSnap.exists()) {
+                    await deleteDoc(doc(db, "guest_book", docId ));
+                    alert('정상적으로 삭제되었습니다.');
+                    window.location.reload(); // 새로고침
+                } else {
+                    alert('이미 삭제된 데이터 입니다.');
+                }
             } else {
                 alert('잘못된 비밀번호 입니다.');
             }
@@ -296,6 +345,44 @@
         $('#deleteModal').on('hidden.bs.modal', function () {
             document.getElementById('deletePassword').value = '';
         });
+
+
+
+
+        /** 
+         * 방명록 데이터 가져오기 
+         */
+        let guest_book = await getDocs(collection(db, "guest_book"));
+
+        guest_book.forEach((doc) => {
+            let row = doc.data();
+
+            let name = row['name'];
+            let password = row['password'];
+            let comment = row['comment'];
+            let timestamp = row['created_dtm'];
+            let docId = doc.id;
+
+
+            let commentCard = document.createElement('div');
+            commentCard.className = 'card p-3 my-3 comment-card';
+            commentCard.dataset.password = password;
+            commentCard.dataset.docId = doc.id;
+            commentCard.innerHTML = `
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <h4 class="card-title">${name}</h4>
+              <span class="delete-btn" data-bs-toggle="modal" data-bs-target="#deleteModal">&times;</span>
+            </div>
+            <p class="card-text"><pre>${comment}</pre></p>
+            <p class="comment-meta">등록일시: <span class="timestamp">${timestamp}</span></p>
+          </div>
+        `;
+
+            document.getElementById('commentsList').appendChild(commentCard);
+
+        });
+
     </script>
 
 
