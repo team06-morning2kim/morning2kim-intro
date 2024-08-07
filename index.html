@@ -272,7 +272,7 @@
         const db = getFirestore(app);
 
         //------------멤버카드 db입력-------------------
-        document.getElementById('cardForm').addEventListener('card_submit', async function (e) {
+        document.getElementById('cardForm').addEventListener('submit', async function (e) {
             e.preventDefault();
 
             let image = document.getElementById('image').value;
@@ -620,7 +620,7 @@
                             </div>
                         </div>
                         <div class="text-end">
-                            <button id="ml_save" type="card_submit" class="btn btn-primary">등록</button>
+                            <button id="ml_save" type="submit" class="btn btn-primary">등록</button>
                         </div>
                     </form>
                 </div>
