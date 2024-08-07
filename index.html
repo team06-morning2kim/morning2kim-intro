@@ -271,7 +271,90 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
+        //------------멤버카드 db입력-------------------
+        document.getElementById('cardForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
 
+            let image = document.getElementById('image').value;
+            let name = document.getElementById('name').value;
+            let types = document.getElementById('types').value;
+            let styles = document.getElementById('styles').value;
+            let hobby = document.getElementById('hobby').value;
+            let blog = document.getElementById('blog').value;
+            let git = document.getElementById('git').value;
+
+            let memberCard = document.createElement('div');
+            memberCard.className = 'card p-2 my-2 comment-card';
+            memberCard.innerHTML = `
+            <div class="col">
+                <div class="member_card_frame">
+                           <div class="text_body_in_member_card">
+                    <img src="${image}" class="top_img_in_member_card" alt="...">
+                    <p class="name_in_member_card">이름 : ${name}</p>
+                    <p class="text_in_member_card">성향 : ${types}</p>
+                    <p class="text_in_member_card">성격 : ${styles}</p>
+                    <button class="recommend_button">취미 : ${hobby}</button>
+                    <a href="${blog}"><img src="./git_icon.png" class="git_icon_button">
+                    <a href="${git}"><img src="./blog_icon.png" class="blog_icon_button">
+                </div>
+            </div>
+        `;
+
+            document.getElementById('cardsList').appendChild(memberCard);
+
+
+            /** 카드 등록 */
+            let doc = {
+                'image': image,
+                'name': name,
+                'types': types,
+                'styles': styles,
+                'hobby': hobby,
+                'blog': blog,
+                'git': git
+            };
+            await addDoc(collection(db, "member_list"), doc); //member_list에 넣기
+
+            alert('정상적으로 등록되었습니다.');
+            window.location.reload(); // 새로고침
+            document.getElementById('cardForm').reset();
+        });
+        //-------------카드 데이터 가져오기---------------------------
+        let member_list = await getDocs(collection(db, "member_list"));
+
+        member_list.forEach((doc) => {
+            let row = doc.data();
+
+            let image = row['image'];
+            let name = row['name'];
+            let types = row['types'];
+            let styles = row['styles'];
+            let hobby = row['hobby'];
+            let blog = row['blog'];
+            let git = row['git'];
+
+            let memberCard = document.createElement('div');
+            memberCard.className = 'card p-2 my-2 comment-card';
+            memberCard.innerHTML = `
+            <div class="col">
+                <div class="member_card_frame">
+                           <div class="text_body_in_member_card">
+                    <img src="${image}" class="top_img_in_member_card" alt="...">
+                    <p class="name_in_member_card">이름 : ${name}</p>
+                    <p class="text_in_member_card">성향 : ${types}</p>
+                    <p class="text_in_member_card">성격 : ${styles}</p>
+                    <button class="recommend_button">취미 : ${hobby}</button>
+                    <a href="${blog}"><img src="./git_icon.png" class="git_icon_button">
+                    <a href="${git}"><img src="./blog_icon.png" class="blog_icon_button">
+                </div>
+            </div>
+        `;
+
+            document.getElementById('cardsList').appendChild(memberCard);
+
+        });
+
+        //-------------------------------------------
         document.getElementById('commentForm').addEventListener('submit', async function (e) {
             e.preventDefault();
 
@@ -323,15 +406,15 @@
 
         document.getElementById('confirmDelete').addEventListener('click', async function () {
             let deletePassword = document.getElementById('deletePassword').value;
-            
+
             if (commentToDelete && String(commentToDelete.data('password')) === String(deletePassword)) {
                 commentToDelete.remove();
 
                 $('#deleteModal').modal('hide');
-                const docId = String(commentToDelete.data('docId')) ; 
+                const docId = String(commentToDelete.data('docId'));
                 const docSnap = await getDoc(doc(db, "guest_book", docId));
                 if (docSnap.exists()) {
-                    await deleteDoc(doc(db, "guest_book", docId ));
+                    await deleteDoc(doc(db, "guest_book", docId));
                     alert('정상적으로 삭제되었습니다.');
                     window.location.reload(); // 새로고침
                 } else {
@@ -478,37 +561,9 @@
 
 
     <!-- 팀원 소개 -->
-    <div id="member_intro">
+    <div id="member_list">
         <div class="member_card">
             <div class="row row-cols-2 row-cols-md-2">
-                <div class="col">
-                    <div class="member_card_frame">
-                        <div class="text_body_in_member_card">
-                            <img src="https://newsimg.sedaily.com/2020/06/30/1Z488A9W20_7.jpg"
-                                class="top_img_in_member_card" alt="...">
-                            <p class="name_in_member_card">[이름]</p>
-                            <p class="text_in_member_card">[목표]</p>
-                            <p class="text_in_member_card">[각오]</p>
-                            <button class="recommend_button">추천해요</button>
-                            <img src="./git_icon.png" class="git_icon_button">
-                            <img src="./blog_icon.png" class="blog_icon_button">
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="member_card_frame">
-                        <div class="text_body_in_member_card">
-                            <img src="https://newsimg.sedaily.com/2020/06/30/1Z488A9W20_7.jpg"
-                                class="top_img_in_member_card" alt="...">
-                            <p class="name_in_member_card">[이름]</p>
-                            <p class="text_in_member_card">[목표]</p>
-                            <p class="text_in_member_card">[각오]</p>
-                            <button class="recommend_button">추천해요</button>
-                            <img src="./git_icon.png" class="git_icon_button">
-                            <img src="./blog_icon.png" class="blog_icon_button">
-                        </div>
-                    </div>
-                </div>
                 <div class="col">
                     <div class="member_card_frame">
                         <div class="text_body_in_member_card">
@@ -536,6 +591,47 @@
                             <img src="./blog_icon.png" class="blog_icon_button">
                         </div>
                     </div>
+                </div>
+                <div class="col">
+                    <h5 class="card-title">저희 멤버들을 소개합니다!</h5>
+                    <form id="cardForm" class="member_card">
+                        <div class="row">
+                            <div class="mb-3 col-md-6">
+                                <label for="image" class="form-label">이미지URL</label>
+                                <input type="text" class="form-control" id="image" required>
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label for="name" class="form-label">이름</label>
+                                <input type="text" class="form-control" id="name" required>
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label for="types" class="form-label">성향(MBTI)</label>
+                                <input type="text" class="form-control" id="types" required>
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label for="styles" class="form-label">성격</label>
+                                <input type="text" class="form-control" id="styles" required>
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label for="hobby" class="form-label">취미</label>
+                                <input type="text" class="form-control" id="hobby" required>
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label for="blog" class="form-label">블로그URL</label>
+                                <input type="text" class="form-control" id="blog" required>
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label for="git" class="form-label">깃허브URL</label>
+                                <input type="text" class="form-control" id="git" required>
+                            </div>
+                        </div>
+                        <div class="text-end">
+                            <button id="ml_save" type="submit" class="btn btn-primary">등록</button>
+                        </div>
+                    </form>
+                </div>
+                <div id="cardsList" class="mt-4">
+                
                 </div>
             </div>
         </div>
