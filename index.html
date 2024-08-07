@@ -62,9 +62,9 @@
         }
 
         .member_card_frame {
-            border-radius: 30px;
-            background-color: white;
-            border: none;
+            border-radius: 15px;
+            background-color: rgba(255, 255, 255, 0.863);
+            border: red 2px solid;
             color: black;
             margin-left: 50px;
             margin-right: 50px;
@@ -77,13 +77,8 @@
             border-radius: 20px;
         }
 
-        .text_body_in_member_card {
-            border: blanchedalmond 2px solid;
-            border-radius: 20px;
-        }
-
         .name_in_member_card {
-            color: orange;
+            color: rgba(235, 155, 7, 0.897);
             margin-top: 10px;
             font-size: 16px;
         }
@@ -101,11 +96,12 @@
             border: none;
             border-radius: 6px;
             cursor: pointer;
+            right: 50px;
         }
 
         .git_icon_button {
             position: static;
-            right: 100px;
+            right: 200px;
             bottom: 50px;
             width: 50px;
             height: 50px;
@@ -113,7 +109,7 @@
 
         .blog_icon_button {
             position: static;
-            right: 200px;
+            right: 300px;
             bottom: 50px;
             width: 50px;
             height: 50px;
@@ -288,12 +284,11 @@
             memberCard.innerHTML = `
             <div class="col">
                 <div class="member_card_frame">
-                           <div class="text_body_in_member_card">
                     <img src="${image}" class="top_img_in_member_card" alt="...">
                     <p class="name_in_member_card">이름 : ${name}</p>
                     <p class="text_in_member_card">성향 : ${types}</p>
                     <p class="text_in_member_card">성격 : ${styles}</p>
-                    <button class="recommend_button">취미 : ${hobby}</button>
+                    <p class="text_in_member_card">취미 : ${hobby}</p>
                     <a href="${blog}"><img src="./git_icon.png" class="git_icon_button">
                     <a href="${git}"><img src="./blog_icon.png" class="blog_icon_button">
                 </div>
@@ -338,12 +333,12 @@
             memberCard.innerHTML = `
             <div class="col">
                 <div class="member_card_frame">
-                           <div class="text_body_in_member_card">
                     <img src="${image}" class="top_img_in_member_card" alt="...">
                     <p class="name_in_member_card">이름 : ${name}</p>
                     <p class="text_in_member_card">성향 : ${types}</p>
                     <p class="text_in_member_card">성격 : ${styles}</p>
-                    <button class="recommend_button">취미 : ${hobby}</button>
+                    <p class="text_in_member_card">취미 : ${hobby}</p>
+                    <p></p>
                     <a href="${blog}"><img src="./git_icon.png" class="git_icon_button">
                     <a href="${git}"><img src="./blog_icon.png" class="blog_icon_button">
                 </div>
@@ -518,11 +513,13 @@
                 <div class="content">
                     <span class="stars"></span>
                     <h2 style="font-size: 38px;" class="java">팀명:오전TO킴</h2>
-                  <br>
-                    <p style="font-size: 22px;" class="java"><strong>오</strong>은택 <strong>전</strong>봉준<br><strong>김</strong>진엽 <strong>김</strong>현하<br>
+                    <br>
+                    <p style="font-size: 22px;" class="java"><strong>오</strong>은택
+                        <strong>전</strong>봉준<br><strong>김</strong>진엽 <strong>김</strong>현하<br>
                     </p>
-                    <p style="font-size: 16px;" class="java">팀원 4명의 성을 이어붙여서 <BR>오전TO킴(TWO김)이라는 것과,<BR> 본 캠프 기간동안 오전부터(오전TO) <BR>
-                    컴퓨터를 킴(킴) 이라는 <BR>두가지의 의미를 담고있습니다.</p>
+                    <p style="font-size: 16px;" class="java">팀원 4명의 성을 이어붙여서 <BR>오전TO킴(TWO김)이라는 것과,<BR> 본 캠프 기간동안
+                        오전부터(오전TO) <BR>
+                        컴퓨터를 킴(킴) 이라는 <BR>두가지의 의미를 담고있습니다.</p>
                 </div>
             </div>
             <div class="face face2">
@@ -547,10 +544,11 @@
             <div class="face face1">
                 <div class="content">
                     <span class="stars"></span>
-                    <p style="font-size: 17px;"class="cSharp"><strong>오은택</strong>:게임 회사 취업,<BR>포기하지 않고 끝맺음을 잘하자!<br>
-                     <BR> <strong>전봉준</strong>:신규 온라인 게임 개발,<BR>이번에는 끝까지!
-                      <br> <br><strong>김진엽</strong>:Node_6기 수료<BR>한 곳에만 집중하자!<br>
-                      <br><strong>김현하</strong>:백엔드 초고수 되기,<BR>마스터할때 까지 건들지마!<br></p>
+                    <p style="font-size: 17px;" class="cSharp"><strong>오은택</strong>:게임 회사 취업,<BR>포기하지 않고 끝맺음을 잘하자!<br>
+                        <BR> <strong>전봉준</strong>:신규 온라인 게임 개발,<BR>이번에는 끝까지!
+                        <br> <br><strong>김진엽</strong>:Node_6기 수료<BR>한 곳에만 집중하자!<br>
+                        <br><strong>김현하</strong>:백엔드 초고수 되기,<BR>마스터할때 까지 건들지마!<br>
+                    </p>
                 </div>
             </div>
             <div class="face face2">
@@ -566,75 +564,60 @@
             <div class="row row-cols-2 row-cols-md-2">
                 <div class="col">
                     <div class="member_card_frame">
-                        <div class="text_body_in_member_card">
-                            <img src="https://newsimg.sedaily.com/2020/06/30/1Z488A9W20_7.jpg"
-                                class="top_img_in_member_card" alt="...">
-                            <p class="name_in_member_card">[이름]</p>
-                            <p class="text_in_member_card">[목표]</p>
-                            <p class="text_in_member_card">[각오]</p>
-                            <button class="recommend_button">추천해요</button>
-                            <img src="./git_icon.png" class="git_icon_button">
-                            <img src="./blog_icon.png" class="blog_icon_button">
+                        <img src="https://newsimg.sedaily.com/2020/06/30/1Z488A9W20_7.jpg"
+                            class="top_img_in_member_card" alt="...">
+                        <p class="name_in_member_card">[이름]</p>
+                        <p class="text_in_member_card">[목표]</p>
+                        <p class="text_in_member_card">[각오]</p>
+                        <p class="text_in_member_card">[취미]</p>
+                        <img src="./git_icon.png" class="git_icon_button">
+                        <img src="./blog_icon.png" class="blog_icon_button">
+                    </div>
+                </div>                
+            </div>
+            <div class="col">
+                <h5 class="card-title">저희 멤버들을 소개합니다!</h5>
+                <form id="cardForm" class="member_card">
+                    <div class="row">
+                        <div class="mb-3 col-md-6">
+                            <label for="image" class="form-label">이미지URL</label>
+                            <input type="text" class="form-control" id="image" required>
+                        </div>
+                        <div class="mb-3 col-md-6">
+                            <label for="name" class="form-label">이름</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3 col-md-6">
+                            <label for="types" class="form-label">성향(MBTI)</label>
+                            <input type="text" class="form-control" id="types" required>
+                        </div>
+                        <div class="mb-3 col-md-6">
+                            <label for="styles" class="form-label">성격</label>
+                            <input type="text" class="form-control" id="styles" required>
+                        </div>
+                        <div class="mb-3 col-md-6">
+                            <label for="hobby" class="form-label">취미</label>
+                            <input type="text" class="form-control" id="hobby" required>
+                        </div>
+                        <div class="mb-3 col-md-6">
+                            <label for="blog" class="form-label">블로그URL</label>
+                            <input type="text" class="form-control" id="blog" required>
+                        </div>
+                        <div class="mb-3 col-md-6">
+                            <label for="git" class="form-label">깃허브URL</label>
+                            <input type="text" class="form-control" id="git" required>
                         </div>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="member_card_frame h-100">
-                        <div class="text_body_in_member_card">
-                            <img src="https://newsimg.sedaily.com/2020/06/30/1Z488A9W20_7.jpg"
-                                class="top_img_in_member_card" alt="...">
-                            <p class="name_in_member_card">[이름]</p>
-                            <p class="text_in_member_card">[목표]</p>
-                            <p class="text_in_member_card">[각오]</p>
-                            <button class="recommend_button">추천해요</button>
-                            <img src="./git_icon.png" class="git_icon_button">
-                            <img src="./blog_icon.png" class="blog_icon_button">
-                        </div>
+                    <div class="text-end">
+                        <button id="ml_save" type="submit" class="btn btn-primary">등록</button>
                     </div>
-                </div>
-                <div class="col">
-                    <h5 class="card-title">저희 멤버들을 소개합니다!</h5>
-                    <form id="cardForm" class="member_card">
-                        <div class="row">
-                            <div class="mb-3 col-md-6">
-                                <label for="image" class="form-label">이미지URL</label>
-                                <input type="text" class="form-control" id="image" required>
-                            </div>
-                            <div class="mb-3 col-md-6">
-                                <label for="name" class="form-label">이름</label>
-                                <input type="text" class="form-control" id="name" required>
-                            </div>
-                            <div class="mb-3 col-md-6">
-                                <label for="types" class="form-label">성향(MBTI)</label>
-                                <input type="text" class="form-control" id="types" required>
-                            </div>
-                            <div class="mb-3 col-md-6">
-                                <label for="styles" class="form-label">성격</label>
-                                <input type="text" class="form-control" id="styles" required>
-                            </div>
-                            <div class="mb-3 col-md-6">
-                                <label for="hobby" class="form-label">취미</label>
-                                <input type="text" class="form-control" id="hobby" required>
-                            </div>
-                            <div class="mb-3 col-md-6">
-                                <label for="blog" class="form-label">블로그URL</label>
-                                <input type="text" class="form-control" id="blog" required>
-                            </div>
-                            <div class="mb-3 col-md-6">
-                                <label for="git" class="form-label">깃허브URL</label>
-                                <input type="text" class="form-control" id="git" required>
-                            </div>
-                        </div>
-                        <div class="text-end">
-                            <button id="ml_save" type="submit" class="btn btn-primary">등록</button>
-                        </div>
-                    </form>
-                </div>
-                <div id="cardsList" class="mt-4">
-                
-                </div>
+                </form>
+            </div>
+            <div id="cardsList" class="mt-4">
+
             </div>
         </div>
+    </div>
     </div>
 
     <!-- 방명록 -->
