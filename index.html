@@ -4,16 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[오전to김] 소개 페이지</title>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
+    <title>[오전to킴] 소개 페이지</title>
+
+
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
+    <!-- <script src='main.js'></script> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-    
+
     <style>
         body {
             background-color: #f8f9fa;
@@ -48,152 +50,239 @@
             color: #6c757d;
         }
 
+        /* 멤버 소개 카드*/
+        .member_card {
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .member_card>col {
+            width: 1000px;
+            margin: 20px;
+        }
+
+        .member_card_frame {
+            border-radius: 30px;
+            background-color: white;
+            border: none;
+            color: black;
+            margin-left: 50px;
+            margin-right: 50px;
+            margin-top: 50px;
+        }
+
+        .top_img_in_member_card {
+            object-fit: cover;
+            height: 250px;
+            border-radius: 20px;
+        }
+
+        .text_body_in_member_card {
+            border: blanchedalmond 2px solid;
+            border-radius: 20px;
+        }
+
+        .name_in_member_card {
+            color: orange;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        .text_in_member_card {
+            color: black;
+            font-size: 12px;
+        }
+
+        .recommend_button {
+            background-color: orange;
+            color: white;
+            text-align: center;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .git_icon_button {
+            position: static;
+            right: 100px;
+            bottom: 50px;
+            width: 50px;
+            height: 50px;
+        }
+
+        .blog_icon_button {
+            position: static;
+            right: 200px;
+            bottom: 50px;
+            width: 50px;
+            height: 50px;
+        }
+
         .header {
             background-size: cover;
             background-image:
-                url('https://cdn.discordapp.com/attachments/1001450529379061783/1269910417338138685/9k.png?ex=66b1c7bd&is=66b0763d&hm=a76d3c6214eb2a784c96dadfd10b7ba875575e962af31bb4e762f8acb8a2b0cc&');
+                url('https://cdn.discordapp.com/attachments/1001450529379061783/1270547658888581201/hero-laboratory-of-the-future-2024-380502-1800x300.png?ex=66b41937&is=66b2c7b7&hm=48bb75bd2a956f6832e7b29d32fb14923b67ea3b6e8e4713e3196ad13b3b3ad1&');
             background-position: right;
             height: 200px;
             display: flex;
             flex-direction: column;
         }
 
-    
+
 
         @import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
 
-body {
- 
- .container1 {
-    max-width: 97vw;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-gap: 35px;
-    margin: 0 auto;
-    font-size: medium;
+        body {
 
-    .card {
-      position: sticky;
-      width: 300px;
-      height: 400px;
-      margin: 0px 1000px 0px 150px;
-      background: #000;
-      border-radius: 15px;
-      box-shadow: 0 15px 20px rgba(0, 0, 0, 0.5);
+            .container1 {
+                max-width: 96.5vw;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                grid-gap: 35px;
+                margin: 0 auto;
+                font-size: medium;
 
-      .face {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+                .card {
+                    position: sticky;
+                    width: 300px;
+                    height: 400px;
+                    margin: 0px 1000px 0px 150px;
+                    background: #000;
+                    border-radius: 15px;
+                    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.5);
 
-        &.face1 {
-          box-sizing: border-box;
-          padding: 20px;
+                    .face {
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
 
-          h2 {
-            margin: 0;
-            padding: 0;
-          }
+                        &.face1 {
+                            box-sizing: border-box;
+                            padding: 20px;
 
-          .java {
-            background-color: #fffc00;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
+                            h2 {
+                                margin: 0;
+                                padding: 0;
+                            }
 
-          .python {
-            background-color: #00fffc;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
+                            .java {
+                                background-color: #fffc00;
+                                -webkit-background-clip: text;
+                                -webkit-text-fill-color: transparent;
+                            }
 
-          .cSharp {
-            background-color: #fc00ff;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
+                            .python {
+                                background-color: #00fffc;
+                                -webkit-background-clip: text;
+                                -webkit-text-fill-color: transparent;
+                            }
+
+                            .cSharp {
+                                background-color: #fc00ff;
+                                -webkit-background-clip: text;
+                                -webkit-text-fill-color: transparent;
+                            }
+                        }
+
+                        &.face2 {
+                            transition: 0.5s;
+
+                            h2 {
+                                margin: 0;
+                                padding: 0;
+                                font-size: 3em;
+                                color: olive;
+                                transition: 0.5s;
+                                text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                                z-index: 10;
+                            }
+                        }
+                    }
+                }
+
+                .card:hover .face.face2 {
+                    height: 60px;
+
+                    h2 {
+                        font-size: 2em;
+
+                    }
+                }
+
+                .card:nth-child(1) .face.face2 {
+                    background-image: linear-gradient(40deg,
+                            #fffc00 0%,
+                            #fc00ff 45%,
+                            #00fffc 100%);
+                    border-radius: 15px;
+                }
+
+                .card:nth-child(2) .face.face2 {
+                    background-image: linear-gradient(40deg,
+                            #fc00ff 0%,
+                            #00fffc 45%,
+                            #fffc00 100%);
+                    border-radius: 15px;
+                }
+
+                .card:nth-child(3) .face.face2 {
+                    background-image: linear-gradient(40deg,
+                            #00fffc 0%,
+                            #fc00ff 45%,
+                            #fffc00 100%);
+                    border-radius: 15px;
+                }
+            }
         }
-
-        &.face2 {
-          transition: 0.5s;
-
-          h2 {
-            margin: 0;
-            padding: 0;
-            font-size: 3em;
-            color: olive;
-            transition: 0.5s;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            z-index: 10;
-          }
-        }
-      }
-    }
-
-    .card:hover .face.face2 {
-      height: 60px;
-
-      h2 {
-        font-size: 2em;
-       
-      }
-    }
-
-    .card:nth-child(1) .face.face2 {
-      background-image: linear-gradient(
-        40deg,
-        #fffc00 0%,
-        #fc00ff 45%,
-        #00fffc 100%
-      );
-      border-radius: 15px;
-    }
-
-    .card:nth-child(2) .face.face2 {
-      background-image: linear-gradient(
-        40deg,
-        #fc00ff 0%,
-        #00fffc 45%,
-        #fffc00 100%
-      );
-      border-radius: 15px;
-    }
-
-    .card:nth-child(3) .face.face2 {
-      background-image: linear-gradient(
-        40deg,
-        #00fffc 0%,
-        #fc00ff 45%,
-        #fffc00 100%
-      );
-      border-radius: 15px;
-    }
-  }
-}
-
     </style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
     <script type="module">
-        document.getElementById('commentForm').addEventListener('submit', function (e) {
+
+        // Firebase SDK 라이브러리 가져오기
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { getDocs, doc, getDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyDpe_9Kox1KJx_J2GP3s_FHgir8dLVcfuE",
+            authDomain: "sparta-morning2kim.firebaseapp.com",
+            projectId: "sparta-morning2kim",
+            storageBucket: "sparta-morning2kim.appspot.com",
+            messagingSenderId: "63603004697",
+            appId: "1:63603004697:web:4efb0b6b5fde5c34912188",
+            measurementId: "G-DN6TGVGTFF"
+        };
+
+        // Firebase 인스턴스 초기화
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+
+        document.getElementById('commentForm').addEventListener('submit', async function (e) {
             e.preventDefault();
 
-            var name = document.getElementById('name').value;
-            var password = document.getElementById('password').value;
-            var comment = document.getElementById('comment').value;
-            var timestamp = new Date().toLocaleString();
+            let name = document.getElementById('name').value;
+            let password = document.getElementById('password').value;
+            let comment = document.getElementById('comment').value;
+            let timestamp = new Date().toLocaleString();
 
-            var commentCard = document.createElement('div');
+            let commentCard = document.createElement('div');
             commentCard.className = 'card p-3 my-3 comment-card';
-            commentCard.dataset.password = password;  
+            commentCard.dataset.password = password;
             commentCard.innerHTML = `
           <div class="card-body">
             <div class="d-flex justify-content-between">
@@ -207,6 +296,19 @@ body {
 
             document.getElementById('commentsList').appendChild(commentCard);
 
+
+            /** 방명록 등록 */
+            let doc = {
+                'name': name,
+                'password': password,
+                'comment': comment,
+                'created_dtm': new Date().toLocaleString()
+            };
+            await addDoc(collection(db, "guest_book"), doc);
+
+            alert('정상적으로 등록되었습니다.');
+            window.location.reload(); // 새로고침
+
             // Clear the form
             document.getElementById('commentForm').reset();
         });
@@ -218,12 +320,23 @@ body {
             commentToDelete = $(this).closest('.comment-card');
         });
 
-        document.getElementById('confirmDelete').addEventListener('click', function () {
-            let deletePassword = document.getElementById('deletePassword').value;
 
+        document.getElementById('confirmDelete').addEventListener('click', async function () {
+            let deletePassword = document.getElementById('deletePassword').value;
+            
             if (commentToDelete && String(commentToDelete.data('password')) === String(deletePassword)) {
                 commentToDelete.remove();
+
                 $('#deleteModal').modal('hide');
+                const docId = String(commentToDelete.data('docId')) ; 
+                const docSnap = await getDoc(doc(db, "guest_book", docId));
+                if (docSnap.exists()) {
+                    await deleteDoc(doc(db, "guest_book", docId ));
+                    alert('정상적으로 삭제되었습니다.');
+                    window.location.reload(); // 새로고침
+                } else {
+                    alert('이미 삭제된 데이터 입니다.');
+                }
             } else {
                 alert('잘못된 비밀번호 입니다.');
             }
@@ -232,6 +345,44 @@ body {
         $('#deleteModal').on('hidden.bs.modal', function () {
             document.getElementById('deletePassword').value = '';
         });
+
+
+
+
+        /** 
+         * 방명록 데이터 가져오기 
+         */
+        let guest_book = await getDocs(collection(db, "guest_book"));
+
+        guest_book.forEach((doc) => {
+            let row = doc.data();
+
+            let name = row['name'];
+            let password = row['password'];
+            let comment = row['comment'];
+            let timestamp = row['created_dtm'];
+            let docId = doc.id;
+
+
+            let commentCard = document.createElement('div');
+            commentCard.className = 'card p-3 my-3 comment-card';
+            commentCard.dataset.password = password;
+            commentCard.dataset.docId = doc.id;
+            commentCard.innerHTML = `
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <h4 class="card-title">${name}</h4>
+              <span class="delete-btn" data-bs-toggle="modal" data-bs-target="#deleteModal">&times;</span>
+            </div>
+            <p class="card-text"><pre>${comment}</pre></p>
+            <p class="comment-meta">등록일시: <span class="timestamp">${timestamp}</span></p>
+          </div>
+        `;
+
+            document.getElementById('commentsList').appendChild(commentCard);
+
+        });
+
     </script>
 
 
@@ -245,7 +396,7 @@ body {
 
     <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">오전to김</a>
+            <a class="navbar-brand" href="#">오전to킴</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -269,62 +420,125 @@ body {
         </div>
     </nav>
 
-        <div id="team_intro"class="header">
-            <img style="width: 190px;margin: 5px auto auto 857px;"
-                src="https://cdn.discordapp.com/attachments/1001450529379061783/1269919354556780605/image.png?ex=66b1d010&is=66b07e90&hm=76bdbd259d5f4561d51e2c30d2f965a446cbe127c387946f5bd73c0a26353fe4&">
-        </div>
-        <div class="팀 소개" style="margin: 30px auto 30px 798px;">
-            <h1>오전TO김 팀 소개</h1>
-        </div>
-            
-            <div class="container1">
+    <div id="team_intro" class="header">
+        <img style="width: 190px;margin: 5px auto auto 857px;"
+            src="https://cdn.discordapp.com/attachments/1001450529379061783/1270548676082667570/image.png?ex=66b41a2a&is=66b2c8aa&hm=e5fa2d493a6e6db03853fcf315a02dfbfd2b076134dfdc3969a3b5fc305eeb11&">
+    </div>
+    <div class="팀 소개" style="margin: 30px auto 30px 793px;">
+        <h1>오전TO킴 팀 소개</h1>
+    </div>
 
-                <div class="card">
-                  <div class="face face1">
-                    <div class="content">
-                      <span class="stars"></span>
-                      <h2 class="java">오전TO김 팀<br>  구성원</h2>
-                      <p class="java">1.<br>2.<br>3.<br>4.<br></p>
-                    </div>
-                  </div>
-                  <div class="face face2">
-                    <h2>팀 구성원</h2>
-                  </div>
-                </div>
-              
-                <div class="card">
-                  <div class="face face1">
-                    <div class="content">
-                      <span class="stars"></span>
-                      <h2 class="python">목표</h2>
-                      <p class="python">1.<br>2.<br>3.<br>4.<br></p>
-                    </div>
-                  </div>
-                  <div class="face face2">
-                    <h2>목표</h2>
-                  </div>
-                </div>
-              
-                <div class="card">
-                  <div class="face face1">
-                    <div class="content">
-                      <span class="stars"></span>
-                      <h2 class="cSharp">각오</h2>
-                      <p class="cSharp">1.<br>2.<br>3.<br>4.<br></p>
-                    </div>
-                  </div>
-                  <div class="face face2">
-                    <h2>각오</h2>
-                  </div>
-                </div>
-   </div>
-   
-                <!-- 팀원 소개 -->
+    <div class="container1">
 
-<p></p>
-<p></p>
-    <div id="member_intro" style="height: 800px; background-color: blue;">
-        팀원 소개
+        <div class="card">
+            <div class="face face1">
+                <div class="content">
+                    <span class="stars"></span>
+                    <h2 style="font-size: 38px;" class="java">팀명:오전TO킴</h2>
+                  <br>
+                    <p style="font-size: 22px;" class="java"><strong>오</strong>은택 <strong>전</strong>봉준<br><strong>김</strong>진엽 <strong>김</strong>현하<br>
+                    </p>
+                    <p style="font-size: 16px;" class="java">팀원 4명의 성을 이어붙여서 <BR>오전TO킴(TWO김)이라는 것과,<BR> 본 캠프 기간동안 오전부터(오전TO) <BR>
+                    컴퓨터를 킴(킴) 이라는 <BR>두가지의 의미를 담고있습니다.</p>
+                </div>
+            </div>
+            <div class="face face2">
+                <h2>팀명 소개</h2>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="face face1">
+                <div class="content">
+                    <span class="stars"></span>
+                    <h2 style="font-size: 38px;" class="python">팀 구성원</h2><BR>
+                    <p style="font-size: 24px;" class="python">⭐리더:오은택<br>✰부리더:전봉준<br>✏️팀원:김진엽<br>✏️팀원:김현하<br></p>
+                </div>
+            </div>
+            <div class="face face2">
+                <h2>팀 구성원</h2>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="face face1">
+                <div class="content">
+                    <span class="stars"></span>
+                    <p style="font-size: 17px;"class="cSharp"><strong>오은택</strong>:게임 회사 취업,<BR>포기하지 않고 끝맺음을 잘하자!<br>
+                     <BR> <strong>전봉준</strong>:신규 온라인 게임 개발,<BR>이번에는 끝까지!
+                      <br> <br><strong>김진엽</strong>:Node_6기 수료<BR>한 곳에만 집중하자!<br>
+                      <br><strong>김현하</strong>:백엔드 초고수 되기,<BR>마스터할때 까지 건들지마!<br></p>
+                </div>
+            </div>
+            <div class="face face2">
+                <h2>우리의 목표</h2>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 팀원 소개 -->
+    <div id="member_intro">
+        <div class="member_card">
+            <div class="row row-cols-2 row-cols-md-2">
+                <div class="col">
+                    <div class="member_card_frame">
+                        <div class="text_body_in_member_card">
+                            <img src="https://newsimg.sedaily.com/2020/06/30/1Z488A9W20_7.jpg"
+                                class="top_img_in_member_card" alt="...">
+                            <p class="name_in_member_card">[이름]</p>
+                            <p class="text_in_member_card">[목표]</p>
+                            <p class="text_in_member_card">[각오]</p>
+                            <button class="recommend_button">추천해요</button>
+                            <img src="./git_icon.png" class="git_icon_button">
+                            <img src="./blog_icon.png" class="blog_icon_button">
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="member_card_frame">
+                        <div class="text_body_in_member_card">
+                            <img src="https://newsimg.sedaily.com/2020/06/30/1Z488A9W20_7.jpg"
+                                class="top_img_in_member_card" alt="...">
+                            <p class="name_in_member_card">[이름]</p>
+                            <p class="text_in_member_card">[목표]</p>
+                            <p class="text_in_member_card">[각오]</p>
+                            <button class="recommend_button">추천해요</button>
+                            <img src="./git_icon.png" class="git_icon_button">
+                            <img src="./blog_icon.png" class="blog_icon_button">
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="member_card_frame">
+                        <div class="text_body_in_member_card">
+                            <img src="https://newsimg.sedaily.com/2020/06/30/1Z488A9W20_7.jpg"
+                                class="top_img_in_member_card" alt="...">
+                            <p class="name_in_member_card">[이름]</p>
+                            <p class="text_in_member_card">[목표]</p>
+                            <p class="text_in_member_card">[각오]</p>
+                            <button class="recommend_button">추천해요</button>
+                            <img src="./git_icon.png" class="git_icon_button">
+                            <img src="./blog_icon.png" class="blog_icon_button">
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="member_card_frame h-100">
+                        <div class="text_body_in_member_card">
+                            <img src="https://newsimg.sedaily.com/2020/06/30/1Z488A9W20_7.jpg"
+                                class="top_img_in_member_card" alt="...">
+                            <p class="name_in_member_card">[이름]</p>
+                            <p class="text_in_member_card">[목표]</p>
+                            <p class="text_in_member_card">[각오]</p>
+                            <button class="recommend_button">추천해요</button>
+                            <img src="./git_icon.png" class="git_icon_button">
+                            <img src="./blog_icon.png" class="blog_icon_button">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- 방명록 -->
