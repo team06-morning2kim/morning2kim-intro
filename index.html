@@ -278,7 +278,7 @@
         // Firebase 인스턴스 초기화
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
-
+        
         //------------멤버카드 db입력-------------------
         document.getElementById('cardForm').addEventListener('submit', async function (e) {
             e.preventDefault();
@@ -292,22 +292,8 @@
             let git = document.getElementById('git').value;
 
             let memberCard = document.createElement('div');
-            memberCard.innerHTML = `
-            <div class="col">
-                <div class="member_card_frame">
-                    <img src="${image}" class="top_img_in_member_card" alt="...">
-                    <p class="name_in_member_card">이름 : ${name}</p>
-                    <p class="text_in_member_card">성향 : ${types}</p>
-                    <p class="text_in_member_card">목표 : ${goal}</p>
-                    <p class="text_in_member_card">취미 : ${hobby}</p>
-                    <a href="${blog}"><img src="./git_icon.png" class="git_icon_button">
-                    <a href="${git}"><img src="./blog_icon.png" class="blog_icon_button">
-                </div>
-            </div>
-        `;
 
             document.getElementById('cardsList').appendChild(memberCard);
-
 
             /** 카드 등록 */
             let doc = {
@@ -325,11 +311,12 @@
             window.location.reload(); // 새로고침
             document.getElementById('cardForm').reset();
         });
-        //-------------카드 데이터 가져오기---------------------------
+        //-------------카드 db 데이터 가져오기---------------------------
         let member_list = await getDocs(collection(db, "member_list"));
 
         member_list.forEach((doc) => {
-            let row = doc.data();
+            let row = doc.data();            
+            let doc_id = doc.id;
 
             let image = row['image'];
             let name = row['name'];
@@ -348,17 +335,20 @@
                     <p class="text_in_member_card">성향 : ${types}</p>
                     <p class="text_in_member_card">성격 : ${goal}</p>
                     <p class="text_in_member_card">취미 : ${hobby}</p>
-                    <p></p>
-                    <a href="${blog}"><img src="./git_icon.png" class="git_icon_button">
-                    <a href="${git}"><img src="./blog_icon.png" class="blog_icon_button">
+                    <a href="${blog}"><img src="./blog_icon.png" class="blog_icon_button">
+                    <a href="${git}"><img src="./git_icon.png" class="git_icon_button">
+                    <p><button type="button" class="btn btn-danger" id="deleteCard"> 삭제 </button> </p>
                 </div>
             </div>
         `;
-
             document.getElementById('cardsList').appendChild(memberCard);
-
         });
 
+        //----------------멤버카드 삭제 기능------------
+        document.getElementById('deleteCard').addEventListener('click', async function (e) {                     
+            alert('doc.id=',doc.id);
+            await deleteDoc(doc(db, 'member_list', doc_id));                  
+        })     
         //-------------------------------------------
         document.getElementById('commentForm').addEventListener('submit', async function (e) {
             e.preventDefault();
@@ -433,9 +423,6 @@
         $('#deleteModal').on('hidden.bs.modal', function () {
             document.getElementById('deletePassword').value = '';
         });
-
-
-
 
         /** 
          * 방명록 데이터 가져오기 
